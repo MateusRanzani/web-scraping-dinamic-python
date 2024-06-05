@@ -27,3 +27,9 @@ for i in range(1, ultima_pagina+1):
     for produto in produtos:
         marca = produto.find('span', class_=re.compile('nameCard')).get_text().strip()
         preco = produto.find('span', class_=re.compile('nameCard')).get_text().strip()
+
+        dic_produtos['marca'].append(marca)
+        dic_produtos['preco'].append(preco)
+
+df = pd.DataFrame(dic_produtos)
+df.to_csv('/home/mateus/Transferências', encoding='utf-8', sep=";")
